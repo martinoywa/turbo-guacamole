@@ -160,3 +160,4 @@ cython_debug/
 .idea/
 dataset/
 .DS_Store
+model.pt
