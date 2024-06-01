@@ -161,3 +161,4 @@ cython_debug/
 dataset/
 .DS_Store
 model*.pt
+logs/
