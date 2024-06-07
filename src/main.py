@@ -1,4 +1,5 @@
 from pathlib import Path
+import time
 
 import streamlit as st
 import torch
@@ -60,8 +61,10 @@ if image_file is not None:
     bytes_data = image_file.getvalue()
 
     # preprocessing and predictions
+    start = time.time()
     image_tensor = preprocess(bytes_data)
     prediction = model.forward(image_tensor)
+    end = time.time()
 
     # outputs
     _, pred = torch.max(prediction, 1)
@@ -71,5 +74,8 @@ if image_file is not None:
     st.markdown(f"""
     ```
     Predicted Class: {classes[pred.item()]}
+    ```
+    ```
+    Inference Time: {(end - start):.4f} seconds
     ```
     """)
